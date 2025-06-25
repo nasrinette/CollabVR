@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1045 &1
+EditorBuildSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/SampleScene2.unity
+    guid: b4c57ad5486d6884399fae5b7661f473
+  - enabled: 1
+    path: Assets/Scenes/SampleScene remotely.unity
+    guid: 9530ef1b847c0c6459a5bd9fa73ffff3
+  - enabled: 0
+    path: Assets/SpatialAnchors Tutorial/SpatialAnchorsTutorial.unity
+    guid: 41f481c768d970c469455141e6ab8847
+  - enabled: 0
+    path: Assets/Scenes/SampleScene colocated.unity
+    guid: edc8f2328200bb845ae10284069bdea0
+  - enabled: 0
+    path: Assets/Scenes/SampleScene colocated 2.unity
+    guid: bb77d864ebe53e84c9695e9c0851b215
+  m_configObjects:
+    Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 360d1921ef9275240ba57ffa6fdd9fb3, type: 2}
+    com.unity.xr.management.loader_settings: {fileID: 11400000, guid: aa749cf69ec251b479f4fd70415c8e25, type: 2}
+    xr.sdk.mock-hmd.settings: {fileID: 11400000, guid: 6f173e7ed6eb36840b0fab86080abe5f, type: 2}
