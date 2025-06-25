@@ -117,10 +117,12 @@ public class PenDrawer : NetworkBehaviour
         var lr = _currentStroke.GetComponent<LineRenderer>();
         lr.positionCount = _points.Count;
         lr.SetPositions(_points.ToArray());
-
-        // play your audio here if you like
-        if (audioSource != null && drawSound != null)
-            audioSource.PlayOneShot(drawSound);
+        if (_points.Count == 2 && audioSource && drawSound && !audioSource.isPlaying)
+        {
+            audioSource.clip = drawSound;
+            audioSource.loop = true;
+            audioSource.Play();
+        }
     }
 
 
@@ -139,5 +141,7 @@ public class PenDrawer : NetworkBehaviour
             );
             _currentStroke = null;
         }
+        if (audioSource && audioSource.isPlaying)
+        audioSource.Stop();
     }
 }
