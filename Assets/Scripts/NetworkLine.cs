@@ -9,9 +9,13 @@ public class NetworkLine : NetworkBehaviour
     public override void Spawned()
     {
         _lr = GetComponent<LineRenderer>();
+         StrokeRegistry.Instance?.Register(this);
+    }
+    public override void Despawned(NetworkRunner runner, bool hasState)
+    {
+        StrokeRegistry.Instance?.Unregister(this);
     }
 
-    // RPC signature in Fusion 2: no RpcInfo param, call instance.RPC_*(…)
     [Rpc(RpcSources.StateAuthority, RpcTargets.All)]
 
     public void RPC_InitStroke(Vector3[] points, Color col)
