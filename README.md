@@ -34,7 +34,10 @@ Watch the demo here:
    ```bash
    git clone https://github.com/nasrinette/CollabVR.git
 
-2. Open the project in **Unity 2022.3** or later.
+2. Open the project in **Unity 2022.3** or later and chose:
+
+   * "SampleScene remotely" for remote collaboration over the network.
+   * "SampleScene colocated" for co-located collaboration, but still needs internet connection!
 
 3. Set up **Photon**:
 
