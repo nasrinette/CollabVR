@@ -5,9 +5,6 @@ using OVR;  // or the correct Oculus SDK namespace
 
 public class PenDrawer : NetworkBehaviour
 {
-    // [Header("Audio")]
-    // [SerializeField] private AudioSource audioSource;
-    // [SerializeField] private AudioClip drawSound;
 
     [Header("References")]
     [SerializeField] private Transform tip;
@@ -61,9 +58,7 @@ public class PenDrawer : NetworkBehaviour
         _currentStroke = netObj.GetComponent<NetworkLine>();
 
         var lr = netObj.GetComponent<LineRenderer>();
-        // lr.material = new Material(strokeMaterial);
-        // lr.startWidth = 0.008f;
-        // lr.endWidth = 0.008f;
+ 
         lr.material        = new Material(strokeMaterial);
         lr.material.color  = colour;       // per-stroke colour
         lr.startWidth = lr.endWidth = width;
@@ -71,15 +66,12 @@ public class PenDrawer : NetworkBehaviour
         // Smoother line settings
         lr.numCapVertices = 8;      // Rounded ends
         lr.numCornerVertices = 8;   // Rounded corners
-        lr.alignment = LineAlignment.View; // Optional: always face camera
+        lr.alignment = LineAlignment.View; 
 
         _points.Add(tip.position);
         lr.positionCount = 1;
         lr.SetPosition(0, tip.position); 
-        // if (audioSource != null && drawSound != null)
-        // {
-        //     audioSource.PlayOneShot(drawSound);
-        // }
+    
     }
 
     private void AddPointIfNeeded()
@@ -104,11 +96,7 @@ public class PenDrawer : NetworkBehaviour
         Debug.Log($"[PenDrawer] EndStroke() – sending {_points.Count} points");
         _isDrawing = false;
 
-        // direct RPC call on the spawned component
-        // _currentStroke.RPC_InitStroke(
-        //     _points.ToArray(),
-        //     strokeMaterial.color
-        // );
+     
       _currentStroke.RPC_InitStroke(
           _points.ToArray(),
           PenSettings.Instance.StrokeColor,

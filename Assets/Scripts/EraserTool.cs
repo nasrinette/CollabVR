@@ -1,7 +1,6 @@
 using Fusion;
 using UnityEngine;
-using OVR; // or the correct Oculus SDK namespace
-
+using OVR; 
 public class EraserTool : NetworkBehaviour
 {
     [Header("References")]

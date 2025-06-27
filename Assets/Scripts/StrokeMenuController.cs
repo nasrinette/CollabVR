@@ -1,11 +1,10 @@
-// StrokeMenuController.cs – final version
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class StrokeMenuController : MonoBehaviour
 {
-    [SerializeField] List<Button> buttons;      // drag the 6 buttons here
+    [SerializeField] List<Button> buttons;    
     [SerializeField] int columns = 3;
     [Header("OVR input")]
     [SerializeField] OVRInput.RawAxis2D navAxis  = OVRInput.RawAxis2D.RThumbstick;

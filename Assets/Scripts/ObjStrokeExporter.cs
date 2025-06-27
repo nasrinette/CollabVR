@@ -47,18 +47,15 @@ public class ObjStrokeExporter : MonoBehaviour
 
         string fileName = $"draw_{System.DateTime.Now:yyyyMMdd_HHmmss}.obj";
 
-        // string path = Path.Combine(Application.persistentDataPath, fileName);
         string basePath;
 
-// ===== Android / Quest =====
         #if UNITY_ANDROID && !UNITY_EDITOR
-        basePath = "/sdcard/Download";                 // “Downloads” seen in Files app
+        basePath = "/sdcard/Download";                 
         #else
-        // ===== Everything else (Editor, Windows build, etc.) =====
-        basePath = Application.persistentDataPath;     // keep old behaviour on PC
+        basePath = Application.persistentDataPath;    
         #endif
 
-        Directory.CreateDirectory(basePath);           // makes sure the folder exists
+        Directory.CreateDirectory(basePath);           
         string path = Path.Combine(basePath, fileName);
 
         File.WriteAllText(path, sb.ToString());

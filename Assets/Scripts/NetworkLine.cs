@@ -23,7 +23,6 @@ public class NetworkLine : NetworkBehaviour
         _lr.positionCount = points.Length;
         _lr.SetPositions(points);
 
-        // give each stroke its own material instance so colours don't bleed
         var mat = new Material(_lr.material);
         mat.color = col;
         _lr.material = mat;
