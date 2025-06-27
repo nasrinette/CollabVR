@@ -32,7 +32,7 @@ Watch the demo here:
 
 1. Clone this repo:
    ```bash
-   git clone https://github.com/your-username/your-repo.git
+   git clone https://github.com/nasrinette/CollabVR.git
 
 2. Open the project in **Unity 2022.3** or later.
 
