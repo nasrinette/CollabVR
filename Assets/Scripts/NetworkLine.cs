@@ -16,9 +16,9 @@ public class NetworkLine : NetworkBehaviour
         StrokeRegistry.Instance?.Unregister(this);
     }
 
-    [Rpc(RpcSources.StateAuthority, RpcTargets.All)]
+   [Rpc(RpcSources.All, RpcTargets.All)]
 
-    public void RPC_InitStroke(Vector3[] points, Color col)
+    public void RPC_InitStroke(Vector3[] points, Color col, float width)
     {
         _lr.positionCount = points.Length;
         _lr.SetPositions(points);

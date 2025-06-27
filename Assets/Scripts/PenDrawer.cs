@@ -49,7 +49,8 @@ public class PenDrawer : NetworkBehaviour
         Debug.Log("[PenDrawer] StartStroke()");
         _isDrawing = true;
         _points.Clear();
-      
+        float width   = PenSettings.Instance.strokeWidth;
+      Color colour  = PenSettings.Instance.StrokeColor;
         var netObj = Runner.Spawn(
             strokePrefab,
             tip.position,
@@ -60,10 +61,12 @@ public class PenDrawer : NetworkBehaviour
         _currentStroke = netObj.GetComponent<NetworkLine>();
 
         var lr = netObj.GetComponent<LineRenderer>();
-        lr.material = new Material(strokeMaterial);
-        lr.startWidth = 0.008f;
-        lr.endWidth = 0.008f;
-
+        // lr.material = new Material(strokeMaterial);
+        // lr.startWidth = 0.008f;
+        // lr.endWidth = 0.008f;
+        lr.material        = new Material(strokeMaterial);
+        lr.material.color  = colour;       // per-stroke colour
+        lr.startWidth = lr.endWidth = width;
 
         // Smoother line settings
         lr.numCapVertices = 8;      // Rounded ends
@@ -102,11 +105,15 @@ public class PenDrawer : NetworkBehaviour
         _isDrawing = false;
 
         // direct RPC call on the spawned component
-        _currentStroke.RPC_InitStroke(
-            _points.ToArray(),
-            strokeMaterial.color
-        );
-
+        // _currentStroke.RPC_InitStroke(
+        //     _points.ToArray(),
+        //     strokeMaterial.color
+        // );
+      _currentStroke.RPC_InitStroke(
+          _points.ToArray(),
+          PenSettings.Instance.StrokeColor,
+          PenSettings.Instance.strokeWidth
+      );
         _currentStroke = null;
     }
 } 
